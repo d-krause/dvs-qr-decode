@@ -84,7 +84,8 @@ in hex:
 ```
 ### 6. My Ballot QR Code Analysis
 Based on the above steps, I perceive the QR Code bytes to have the following approximate structure.
-<table>
+<br><img src="./assets/ballot-qrcode-structure.png" alt="drawing" width="600"/>
+<!-- <table>
     <tr>
         <td>
             <h3>QR Bytes</h3>
@@ -108,7 +109,7 @@ EC 11 EC 11 EC 11 EC 11 EC 11 EC 11</span>
             <p style="background-color: lightblue">Fill Bytes</p>
         </td>
     </tr>
-</table>
+</table> -->
 
 ### 7. Conclusion
 
