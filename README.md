@@ -124,7 +124,7 @@ EC 11 EC 11 EC 11 EC 11 EC 11 EC 11</span>
 
 ### 7. Conclusion
 
-After the above analysis, I have a near 100% confidence that the votes hidden in my QR Code did indeed match my intended votes for this election and for nearly 5000 ballots in Fulton County, GA.  However, this confidence is limited ONLY to the QR Code only.  This study can not conclude that ALL QR Codes contain the correct intended votes for ALL voters using the *Dominion ImageCast X BMD* around the country, nor can it conclude that the scanner/tabulators correctly allocated the votes.
+After the above analysis, I have a near 100% confidence that the votes hidden in my QR Code did indeed match my intended votes for this election and for the votes of nearly 5000 ballots in Fulton County, GA.  However, this confidence is limited ONLY to the QR Code.  This study can not conclude that ALL QR Codes contain the correct intended votes for ALL voters using the *Dominion ImageCast X BMD* around the country, nor can it conclude that the scanner/tabulators correctly allocated the votes.
 <br><br>
 I will be publishing the Fulton County findings in the coming weeks.
 <br><br>
