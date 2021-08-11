@@ -1,4 +1,5 @@
 # Decoding the Dominion ImageCast X Ballot QR Code
+*Created 11/30/2020, Updated 8/11/2021*
 
 ## Overview
 The [*Dominion ImageCast X* Ballot Marking Device](https://verifiedvoting.org/election-system/dominion-imagecast-x/) ( or *BMD*) was used at my voting precinct in Chicago, IL for the 2020 General Elections.  Described in this document is the process I used to reverse engineer the QR Code
@@ -27,6 +28,8 @@ A week before November 3rd, 2020 during early voting in Chicago, I took a snapsh
 </table>
 
 ### 2. Download the sample ballot from the Chicago Board of Elections
+***UPDATE:***  *The link below is now offline.   [Here](https://raw.githubusercontent.com/d-krause/dvs-qr-decode/main/assets/my2020ballot-html.html) is a copy of what I downloaded, but note that the dom was altered by the script below.*
+
 I used the [Chicago Elections web site](https://chicagoelections.gov/en/sample-ballot.asp?ballot-style=306&wrd=46&pct=20&con=9&leg=7&rep=13&jud=8&ccd=10&bor=2) to locate my ballot options in the 2020 General Election.  Using a developer console I then added html input boxes to the page so I could re-mark the vote I casted the day I voted.  Example code snippet:
 ```
 var c =document.getElementsByClassName('candidates');
@@ -83,8 +86,16 @@ in hex:
 08 A1 00 00 00 00 08 00 10 28 00 00 00 00 00 00 54
 ```
 ### 6. My Ballot QR Code Analysis
+
 Based on the above steps, I perceive the QR Code bytes to have the following approximate structure.
 <br><img src="./assets/ballot-qrcode-structure.png" alt="drawing" width="600"/>
+
+***UPDATE:*** *After analyzing 5000 ballots and studying [QR code data structures](https://www.thonky.com/qr-code-tutorial/data-encoding) more closely, my original file structure analysis above was not entirely correct.*  ***However, my findings related to the actual vote bits is still valid.***
+
+*The first 12 bits ("45E") are telling us that this is  a byte data payload ("4") that is 94 bytes in length ("5E"). Lengths for the vote data sections are 7 bytes and 17 bytes ("07" and "11" in the image, remember shifted 4 bits.)*
+
+*The orange section are error correction codes common in a QR code and ARE NOT a hash or any encrypted or unique value.*
+
 <!-- <table>
     <tr>
         <td>
@@ -113,8 +124,8 @@ EC 11 EC 11 EC 11 EC 11 EC 11 EC 11</span>
 
 ### 7. Conclusion
 
-After the above analysis, I have a near 100% confidence that the votes hidden in my QR Code did indeed match my intended votes for this election.  However, this confidence is limited ONLY to my single vote and as it pertains to the QR Code only.  This study can not conclude that ALL QR Codes contain the correct intended votes for ALL voters using the *Dominion ImageCast X BMD* around the country, nor can it conclude that the scanner/tabulators correctly allocated the votes.
+After the above analysis, I have a near 100% confidence that the votes hidden in my QR Code did indeed match my intended votes for this election and for nearly 5000 ballots in Fulton County, GA.  However, this confidence is limited ONLY to the QR Code only.  This study can not conclude that ALL QR Codes contain the correct intended votes for ALL voters using the *Dominion ImageCast X BMD* around the country, nor can it conclude that the scanner/tabulators correctly allocated the votes.
 <br><br>
-I am interested in writing an application that would do this verification online, but I would need more sample ballot QR Codes in order to standardize the verification process.
+I will be publishing the Fulton County findings in the coming weeks.
 <br><br>
 I am releasing this information to the public so that others can verify their QR Code Ballots.  If you have a picture of your ballot from a recent election and are not able to follow this process to verify your ballot, feel free to email me at verify-qr-ballot@idk.email.  
